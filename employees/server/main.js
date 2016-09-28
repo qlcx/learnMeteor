@@ -14,15 +14,20 @@ Meteor.startup(() => {
   if (!numberRecords) {
     // Generate some data..
     _.times(5000, () => {
-      const { name, email, phone} = helpers.createCard();
+      const { name, email, phone, } = helpers.createCard();
 
       Employees.insert({
         name: name,
         email: email,
         phone: phone,
         //or: name, email, phone
-        avatar: image.avatar()   
+        avatar: image.avatar(),  
       });
     });
   }
+
+  //把服务端数据推送到客户端
+  Meteor.publish('employees', function(per_page) {
+    return Employees.find({}, { limit: per_page });
+  });
 });
