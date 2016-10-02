@@ -13,4 +13,4 @@ Meteor.methods({
   }
 })
 
-export const Bins = new Mongo.Collections('bins');
+export const Bins = new Mongo.Collection('bins');
