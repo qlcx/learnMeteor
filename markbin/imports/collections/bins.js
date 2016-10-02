@@ -10,6 +10,10 @@ Meteor.methods({
       // docs.meteor.com/#/full/method_userid
       ownerId: this.userId
     });
+  },
+
+  'bins.remove': function(bin) {
+    return Bins.remove(bin);
   }
 })
 
